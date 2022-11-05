@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+// option java_multiple_files = true;
+// option java_package = "io.grpc.examples.helloworld";
+// option java_outer_classname = "HelloWorldProto";
+// option objc_class_prefix = "HLW";
+
+package protobuf;
+
+service Turn {
+  rpc TurnOn (Vazio) returns (Status) {}
+
+  rpc TurnOff (Vazio) returns (Status) {}
+}
+
+message Status {
+  bool on = 1;
+}
+
+message Vazio {}
+
+message Request {
+    int32 device = 1;
+    bool on = 2;
+    optional int32 value = 3;
+}
+
+message Response {
+    repeated Request requests = 1;
+}
